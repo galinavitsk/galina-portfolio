@@ -1,26 +1,130 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=VT323&display=swap');
+
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFDF9;
+  --parchment: #E8E4DC;
+  --mocha: #4A4A4A;
+  --mocha-light: #7A7A7A;
+  --peach: #FFB7B2;
+  --seafoam: #B5EAD7;
+  --lilac: #C7CEEA;
+
+
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-parchment: var(--parchment);
+  --color-mocha: var(--mocha);
+  --color-mocha-light: var(--mocha-light);
+  --color-peach: var(--peach);
+  --color-seafoam: var(--seafoam);
+  --color-lilac: var(--lilac);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    font-family: 'Nunito', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Fredoka', sans-serif;
+  }
+
+  body {
+    background-color: var(--background);
+    /* Subtle graph paper background */
+    background-image: radial-gradient(var(--parchment) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+    color: var(--mocha);
+    overflow-x: hidden;
+  }
+
+  /* Refined links */
+  a {
+    transition: all 0.2s ease;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom utilities */
+@layer utilities {
+  .font-mono-retro {
+    font-family: 'VT323', monospace;
+  }
+
+  .font-handwriting {
+    font-family: 'Caveat', cursive;
+  }
+
+  .shadow-hard {
+    box-shadow: 4px 4px 0px 0px var(--mocha);
+  }
+
+  .shadow-hard-pastel {
+    box-shadow: 6px 6px 0px 0px var(--peach);
+  }
+
+  .border-indie {
+    border: 2px dashed var(--mocha);
+  }
+
+  .border-window {
+    border: 2px solid var(--mocha);
+  }
+
+  /* Refined Animations */
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+}
+
+/* Keyframes */
+@keyframes blink {
+
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
