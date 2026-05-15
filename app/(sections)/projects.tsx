@@ -1,25 +1,79 @@
-"use client"
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FaDiceD20 } from 'react-icons/fa';
-import { GrGithub } from 'react-icons/gr';
-import { FiExternalLink } from 'react-icons/fi';
-import { Tooltip } from 'react-tooltip';
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { FaDiceD20, FaMapPin } from "react-icons/fa";
+import { GrGithub } from "react-icons/gr";
+import { FiExternalLink } from "react-icons/fi";
+import { Tooltip } from "react-tooltip";
 const projects = [
   {
-    icon: <FaDiceD20/>,
-    title: 'Quest Scheduler',
-    description:
-      'A tool for scheduling your dnd sessions. Allows DMs to set up windows they are available in, then players put in their availability in 30 minute chunks. And finally they can all look at a summary page to find a perfect time for them all to meet for that 4 hour session. Also allows specifying how many players and which players are required for a session.',
-    color: 'bg-peach',
-    tags: ['React', 'Tailwind', 'Postgres', 'Go'],
-    links:[
-        {type: 'github', url: 'https://github.com/galinavitsk/availability-scheduler', tooltip:"View Frontend on GitHub"},
-        {type: 'github', url: 'https://github.com/galinavitsk/availability-scheduler-api', tooltip:"View Backend on GitHub"},
-        {type: 'external', url: 'https://quest-scheduler.vercel.app/', tooltip:"View Live"},
-    ]
+    icon: <FaDiceD20 />,
+    title: "Quest Scheduler",
+    description: (
+      <p>
+        A tool for scheduling your dnd sessions. Allows DMs to set up windows
+        they are available in, then players put in their availability in 30
+        minute chunks. And finally they can all look at a summary page to find a
+        perfect time for them all to meet for that 4 hour session. Also allows
+        specifying how many players and which players are required for a
+        session.
+      </p>
+    ),
+    color: "bg-peach",
+    tags: ["React", "Tailwind", "Postgres", "Go"],
+    links: [
+      {
+        type: "github",
+        url: "https://github.com/galinavitsk/availability-scheduler",
+        tooltip: "View Frontend on GitHub",
+      },
+      {
+        type: "github",
+        url: "https://github.com/galinavitsk/availability-scheduler-api",
+        tooltip: "View Backend on GitHub",
+      },
+      {
+        type: "external",
+        url: "https://quest-scheduler.vercel.app/",
+        tooltip: "View Live",
+      },
+    ],
   },
-]
+  {
+    icon: <FaMapPin />,
+    title: "TripKit",
+    description: (
+      <>
+        <p>
+          TripKit is a collaborative trip-planning web app built with Next.js,
+          React, TypeScript, and Tailwind CSS. It helps groups create shared
+          itineraries, invite travelers, organize stays, plan activities and
+          meals, vote on ideas, leave comments, and keep useful links in one
+          place.
+        </p>
+        <p className="mt-4">
+          The app includes account-based trip dashboards, a guided trip setup
+          flow, shared trip pages with member join profiles, real-time trip
+          updates via SignalR, Mapbox-powered location autocomplete and driving
+          estimates, and Google Maps route links for planned stays. The
+          interface is designed around a playful postcard-inspired travel
+          aesthetic while still supporting practical planning workflows like
+          drag-and-drop activity placement, trip editing, member management, and
+          collaborative decision-making.
+        </p>
+      </>
+    ),
+    color: "bg-seafoam",
+    tags: ["Next.js", "React", "TypeScript", "Tailwind", "SignalR", "Mapbox", "Framer Motion","Postgres","C#", ".Net"],
+    links: [
+      {
+        type: "external",
+        url: "https://group-tripkit.vercel.app/",
+        tooltip: "View Live",
+      },
+    ],
+  },
+];
 export function Projects() {
   return (
     <section id="projects" className="scroll-mt-12">
@@ -43,7 +97,7 @@ export function Projects() {
             }}
             viewport={{
               once: true,
-              margin: '-50px',
+              margin: "-50px",
             }}
             transition={{
               delay: idx * 0.1,
@@ -56,22 +110,28 @@ export function Projects() {
               >
                 {project.icon}
               </div>
-              {project.links.map((link) => (<div key={link.url}>
-                <Tooltip id={link.url} disableStyleInjection className="bg-parchment! text-mocha!" noArrow />
-                <a
-                  target="_blank"
-                  data-tooltip-id={link.url}
-                  data-tooltip-content={link.tooltip}
-                  href={link.url}
-                  className="text-mocha-light hover:text-mocha transition-colors"
-                  aria-label={link.tooltip}
-                >
-                  {link.type === 'github' ? (
-                    <GrGithub size={20} />
-                  ) : (
-                    <FiExternalLink size={20} />
-                  )}
-                </a>
+              {project.links.map((link) => (
+                <div key={link.url}>
+                  <Tooltip
+                    id={link.url}
+                    disableStyleInjection
+                    className="bg-parchment! text-mocha!"
+                    noArrow
+                  />
+                  <a
+                    target="_blank"
+                    data-tooltip-id={link.url}
+                    data-tooltip-content={link.tooltip}
+                    href={link.url}
+                    className="text-mocha-light hover:text-mocha transition-colors"
+                    aria-label={link.tooltip}
+                  >
+                    {link.type === "github" ? (
+                      <GrGithub size={20} />
+                    ) : (
+                      <FiExternalLink size={20} />
+                    )}
+                  </a>
                 </div>
               ))}
             </div>
@@ -80,9 +140,9 @@ export function Projects() {
               {project.title}
             </h3>
 
-            <p className="flex-1 mb-6 text-mocha-light leading-relaxed">
+            <div className="flex-1 mb-6 text-mocha-light leading-relaxed">
               {project.description}
-            </p>
+            </div>
 
             <div className="flex flex-wrap gap-2 mt-auto pt-4 border-parchment border-t border-dashed">
               {project.tags.map((tag) => (
@@ -98,5 +158,5 @@ export function Projects() {
         ))}
       </div>
     </section>
-  )
+  );
 }

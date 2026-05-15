@@ -29,15 +29,15 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <div className="flex md:flex-row flex-col gap-8 md:gap-12 selection:bg-peach mx-auto p-4 md:p-8 w-full max-w-7xl min-h-screen font-sans selection:text-white">
+      <body className="flex md:flex-row flex-col gap-8 md:gap-12 selection:bg-peach mx-auto p-4 md:p-8 w-full max-w-7xl min-h-screen font-sans selection:text-white">
       <Sidebar />
-      <body className="flex flex-col min-h-full">
+      <div className="flex flex-col min-h-full">
         <div>
         {children}
         <Footer />
         </div>
-      </body>
-    </div>
+      </div>
+    </body>
     </html>
   );
 }
